@@ -4,24 +4,24 @@ Sample web application development environment with docker-compose, pipenv and p
 # Bootstraping docker pipenv pyramid system
 
 Resources:
-https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tour.html
-https://docs.pipenv.org/en/latest/install/
-https://hub.docker.com/r/kennethreitz/pipenv/dockerfile
+- https://docs.pylonsproject.org/projects/pyramid/en/latest/quick_tour.html
+- https://docs.pipenv.org/en/latest/install/
+- https://hub.docker.com/r/kennethreitz/pipenv/dockerfile
 
 
 1. Start with simple `docker-compose.yml` file:
-```
-version: '3'
-services:
+   ```
+   version: '3'
+   services:
 
-  webapp:
-    image: kennethreitz/pipenv
-    volumes:
-      - .:/app
-      - ./.local:/root/.local
-    command: tail -f /dev/null
-```
-We mount our code folder to /app and `./.local` to store the virtualenv of our app
+     webapp:
+       image: kennethreitz/pipenv
+       volumes:
+         - .:/app
+         - ./.local:/root/.local
+       command: tail -f /dev/null
+   ```
+   We mount our code folder to /app and `./.local` to store the virtualenv of our app
 
 
 2. Get the container up:
@@ -62,7 +62,7 @@ services:
       - 6543:6543
     command: pipenv run python ./app.py
 ```
-With this setup you still need to restart the docker-compose when you changed the code.
+   With this setup you still need to restart the docker-compose when you changed the code.
 
 8. For installing new packages, you can use from the bash command line:
 ```
